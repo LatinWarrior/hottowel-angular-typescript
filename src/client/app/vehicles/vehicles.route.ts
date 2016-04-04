@@ -9,8 +9,8 @@ namespace app.vehicles {
   /* @ngInject */
   function configureStates($stateProvider: ng.ui.IStateProvider) {
     var states: any[] = getStates();
-    states.forEach(function(state) {
-      $stateProvider.state(state.state, state.config);
+    states.forEach(state => {
+        $stateProvider.state(state.state, state.config);
     });
   }
 

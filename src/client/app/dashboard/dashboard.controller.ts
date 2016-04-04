@@ -11,9 +11,9 @@ namespace app.dashboard {
   }
 
   export class DashboardController implements IDashboardVm {
-    static $inject: Array<string> = ['$q', 'dataservice', 'logger'];
+    static $inject: Array<string> = ['$q', 'PeopleDataService', 'logger'];
     constructor(private $q: ng.IQService,
-      private dataservice: app.core.IDataService,
+      private dataservice: app.core.IPeopleDataService,
       private logger: blocks.logger.Logger) {
       var promises = [this.getMessageCount(), this.getPeople()];
       this.$q.all(promises).then(function() {

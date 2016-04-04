@@ -7,8 +7,8 @@ var notfound_1 = require('./utils/notfound'); // use latest TS 1.5, inspired fro
 var data = require('./data');
 router.get('/people', getPeople);
 router.get('/person/:id', getPerson);
-router.get('/vehicles', getVehicles);
-router.get('/vehicles/:id', getVehicle);
+router.get('/person/:id/vehicles', getVehicles);
+router.get('/person/:id/vehicles/:id', getVehicle);
 router.get('/*', notfound_1.notFoundMiddleware);
 module.exports = router;
 //////////////

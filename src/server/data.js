@@ -5,7 +5,7 @@ var data;
     'use strict';
     function getPeople() {
         var people = [
-            { id: 1, firstName: 'Lionel', lastName: 'Messi', age: 27, location: 'Argnetina' },
+            { id: 1, firstName: 'Lionel', lastName: 'Messi', age: 27, location: 'Argentina' },
             { id: 2, firstName: 'Luis', lastName: 'Suarez', age: 28, location: 'Uruguay' },
             { id: 3, firstName: 'Neymar', lastName: 'DoSantos', age: 21, location: 'Brazil' }
         ];
