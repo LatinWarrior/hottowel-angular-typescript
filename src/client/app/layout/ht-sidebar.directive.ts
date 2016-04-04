@@ -19,7 +19,10 @@ namespace app.layout {
       return new HtSidebar();
     }
 
-    bindToController: boolean = true;
+    bindToController: boolean = true;    
+    controller: SidebarController = SidebarController;
+    controllerAs: string = 'vm';
+
     link: (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => void = this.linkFn;
     restrict: string = 'EA';
     scope: IHtSidebarScope = {
@@ -44,6 +47,10 @@ namespace app.layout {
         }
       }
     }
+  }  
+
+  class SidebarController {
+    constructor() { }
   }
 
   angular

@@ -1,4 +1,4 @@
-namespace applayout {
+namespace app.layout {
   'use strict';
 
   interface IHtTopNavScope {
@@ -11,8 +11,8 @@ namespace applayout {
 
     static instance(): ng.IDirective {
       return new HtTopNav();
-    }
-
+    }  
+    
     bindToController: boolean = true;
     controller: TopNavController = TopNavController;
     controllerAs: string = 'vm';
