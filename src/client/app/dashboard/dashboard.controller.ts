@@ -11,9 +11,11 @@ namespace app.dashboard {
   }
 
   export class DashboardController implements IDashboardVm {
-    static $inject: Array<string> = ['$q', 'dataservice', 'logger'];
+      
+    static $inject: Array<string> = ['$q', 'peopleDataService', 'logger'];
+    
     constructor(private $q: ng.IQService,
-      private dataservice: app.core.IDataService,
+      private peopleDataService: app.core.IPeopleDataService,
       private logger: blocks.logger.Logger) {
       var promises = [this.getMessageCount(), this.getPeople()];
       this.$q.all(promises).then(function() {
@@ -23,21 +25,21 @@ namespace app.dashboard {
 
     news = {
       title: 'My Application',
-      description: 'Hot Towel Angular is a SPA template for Angular developers.'
+      description: 'Built with AngularJS'
     };
     messageCount: number = 0;
     people: Array<any> = [];
     title: string = 'Dashboard';
 
     getMessageCount() {
-      return this.dataservice.getMessageCount().then((data) => {
+      return this.peopleDataService.getMessageCount().then((data) => {
         this.messageCount = data;
         return this.messageCount;
       });
     }
 
     getPeople() {
-      return this.dataservice.getPeople().then((data) => {
+      return this.peopleDataService.getPeople().then((data) => {
         this.people = data;
         return this.people;
       });

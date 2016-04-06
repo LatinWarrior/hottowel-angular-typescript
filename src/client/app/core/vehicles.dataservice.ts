@@ -17,7 +17,7 @@ namespace app.core {
     getVehicles:() => ng.IPromise<any> = () =>
         this.$http.get('/api/vehicles')
             .then(this.success)
-            .then(this.fail);
+            .catch(this.fail);
 
     private success:(response:any) => {} = (response) => response.data;
 
@@ -31,5 +31,5 @@ namespace app.core {
 
   angular
       .module('app.core')
-      .service('vehiclesdataservice', VehiclesDataService);
+      .service('vehiclesDataService', VehiclesDataService);
 }

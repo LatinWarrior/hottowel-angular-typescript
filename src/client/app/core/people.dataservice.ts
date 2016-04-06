@@ -34,5 +34,5 @@ namespace app.core {
 
   angular
       .module('app.core')
-      .service('people.dataservice', PeopleDataService);
+      .service('peopleDataService', PeopleDataService);
 }
