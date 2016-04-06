@@ -17,7 +17,7 @@ namespace app.layout {
     navline = {
       title: this.config.appTitle,
       text: 'Modified by Latin Warrior',
-      link: 'http://twitter.com/Latin Warrior'
+      link: 'http://twitter.com/austintexasusa'
     };
 
     hideSplash() {

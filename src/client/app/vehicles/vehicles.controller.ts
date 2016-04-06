@@ -1,46 +1,40 @@
 namespace app.vehicles {
-  'use strict';
+    'use strict';
 
-  interface IVehicle {
-        id: number;
-        make: string;
-        model: string;
-        year: number;
+    interface IVehiclesVm {
+        title: string;
+        vehicles: Array<any>;
+        getVehicles: () => ng.IPromise<Array<any>>;
     }
 
-  interface IVehiclesVm {
-    title: string;
-    vehicles: Array<IVehicle>;
-    getVehicles:() => ng.IPromise<Array<IVehicle>>;
-  }
+    export class VehiclesController implements IVehiclesVm {
+       
 
-  export class VehiclesController implements IVehiclesVm {
-    title: string = 'Vehicles';
+        static $inject: Array<string> = ['$q', 'vehiclesDataService', 'logger'];
 
-    static $inject:Array<string> = ['logger', '$q', 'VehiclesDataService'];
+        constructor(private $q: ng.IQService,
+            private vehiclesDataService: app.core.IVehiclesDataService,
+            private logger: blocks.logger.Logger) {
+            //this.logger.info('Activated Vehicles View');
+            var promises = [this.getVehicles()];
+            this.$q.all(promises).then(function() {
+                logger.info('Activated Vehicles View');
+            });
+        }
 
-    constructor(private logger:blocks.logger.Logger,
-                private $q:ng.IQService,
-                private dataservice:app.core.IVehiclesDataService) {
-      //this.logger.info('Activated Vehicles View');
-      var promises = [this.getVehicles()];
-      this.$q.all(promises).then(() => {
-          logger.info('Activated Vehicles View');
-      });
+        vehicles: Array<any> = [];
+        title: string = 'Vehicles';
+
+        getVehicles() {
+            return this.vehiclesDataService.getVehicles()
+                .then((data) => {
+                    this.vehicles = data;
+                    return this.vehicles;
+                });
+        }
     }
 
-    vehicles:Array<IVehicle> = [];
-
-    getVehicles() {
-      return this.dataservice.getVehicles()
-          .then((data: Array<IVehicle>) => {
-            this.vehicles = data;
-            return this.vehicles;
-          });
-    }
-  }
-
-  angular
-      .module('app.vehicles')
-      .controller('VehiclesController', VehiclesController);
+    angular
+        .module('app.vehicles')
+        .controller('VehiclesController', VehiclesController);
 }
