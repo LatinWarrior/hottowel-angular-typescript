@@ -22,7 +22,7 @@ namespace app.vehicles {
           url: '/vehicles',
           templateUrl: 'app/vehicles/vehicles.html',
           controller: 'VehiclesController',
-          controllerAs: 'veh',
+          controllerAs: 'vm',
           title: 'Vehicles',
           settings: {
             nav: 3,

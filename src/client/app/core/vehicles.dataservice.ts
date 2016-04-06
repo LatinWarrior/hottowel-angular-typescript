@@ -1,7 +1,7 @@
 namespace app.core {
   'use strict';
 
-  export interface IVehiclesDataService {   
+  export interface IVehiclesDataService {
     getVehicles:()=> ng.IPromise<any>;
   }
 
@@ -12,10 +12,10 @@ namespace app.core {
                 private $q:ng.IQService,
                 private exception:blocks.exception.IException,
                 private logger:blocks.logger.Logger) {
-    }   
+    }
 
     getVehicles:() => ng.IPromise<any> = () =>
-        this.$http.get('/api/vehicles')
+        this.$http.get('/api/person/1/vehicles')
             .then(this.success)
             .catch(this.fail);
 

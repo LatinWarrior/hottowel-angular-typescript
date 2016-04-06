@@ -8,7 +8,7 @@ namespace app.vehicles {
     }
 
     export class VehiclesController implements IVehiclesVm {
-       
+
 
         static $inject: Array<string> = ['$q', 'vehiclesDataService', 'logger'];
 
@@ -28,6 +28,7 @@ namespace app.vehicles {
         getVehicles() {
             return this.vehiclesDataService.getVehicles()
                 .then((data) => {
+                    console.log('data: ' + data);
                     this.vehicles = data;
                     return this.vehicles;
                 });
